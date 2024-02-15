@@ -16,7 +16,6 @@ public class OrderRepositoryV2 {
         TraceStatus status = null;
         try {
             status = trace.beginSync(traceId, "OrderRepository.save()");
-
             if (itemId.equals("ex")) {
                 throw new IllegalArgumentException("예외 발생!");
             }
