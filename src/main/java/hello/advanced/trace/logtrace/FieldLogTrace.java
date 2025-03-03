@@ -40,11 +40,10 @@ public class FieldLogTrace implements LogTrace {
         if (e == null) {
             log.info("[{}] {}{} time={}ms", traceId.getId(), addSpace(COMPLETE_PREFIX, traceId.getLevel()),
                     status.getMessage(), resultTimeMs);
-            return;
+        } else {
+            log.info("[{}] {}{} time={}ms ex={}", traceId.getId(), addSpace(EX_PREFIX, traceId.getLevel()),
+                    status.getMessage(), resultTimeMs, e.toString());
         }
-
-        log.info("[{}] {}{} time={}ms ex={}", traceId.getId(), addSpace(EX_PREFIX, traceId.getLevel()),
-                status.getMessage(), resultTimeMs, e.toString());
 
         releaseTraceId();
     }
